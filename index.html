@@ -1,353 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Happy Birthday Izel 🎂</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#6a11cb,#2575fc,#ff6ec7);
-min-height:100vh;
+font-family:'Quicksand',sans-serif;
+background:linear-gradient(180deg,#ffd6e7,#ffb3d9);
 overflow-x:hidden;
-color:white;
+color:#fff;
 }
 
-.stars{
-position:fixed;
-inset:0;
-overflow:hidden;
-pointer-events:none;
-}
-
-.star{
-position:absolute;
-width:3px;
-height:3px;
-background:white;
-border-radius:50%;
-animation:twinkle 3s infinite;
-}
-
-@keyframes twinkle{
-0%,100%{opacity:.2}
-50%{opacity:1}
-}
-
-.container{
+.section{
 min-height:100vh;
 display:flex;
 flex-direction:column;
-justify-content:center;
 align-items:center;
-padding:20px;
+justify-content:center;
+padding:24px;
+position:relative;
 text-align:center;
 }
 
-.glass{
-background:rgba(255,255,255,.12);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,.2);
-border-radius:24px;
-padding:25px;
+h1{
+font-family:'Dancing Script',cursive;
+font-size:3rem;
+margin-bottom:12px;
+}
+
+.subtitle{
+font-size:1rem;
+opacity:.9;
+margin-bottom:20px;
+}
+
+.card{
 width:100%;
 max-width:420px;
-box-shadow:0 10px 40px rgba(0,0,0,.25);
-}
-
-h1{
-font-size:2.2rem;
-margin-bottom:10px;
-}
-
-.type{
-font-size:1.1rem;
-opacity:.9;
-min-height:30px;
+background:rgba(255,255,255,.25);
+backdrop-filter:blur(14px);
+border-radius:28px;
+padding:26px;
+box-shadow:0 12px 35px rgba(0,0,0,.12);
 }
 
 .gift{
-margin:30px auto;
-width:140px;
-height:140px;
+font-size:5rem;
 cursor:pointer;
-position:relative;
-transition:.5s;
+animation:float 2.2s infinite ease-in-out;
 }
 
-.box{
-width:100%;
-height:100%;
-background:#ff4f8b;
-border-radius:15px;
-position:absolute;
-bottom:0;
-}
-
-.lid{
-width:150px;
-height:35px;
-background:#ff78aa;
-border-radius:10px;
-position:absolute;
-top:0;
-left:-5px;
-transition:.8s;
-transform-origin:left;
-}
-
-.ribbon-v{
-position:absolute;
-width:18px;
-height:140px;
-background:white;
-left:50%;
-transform:translateX(-50%);
-}
-
-.ribbon-h{
-position:absolute;
-width:140px;
-height:18px;
-background:white;
-top:40%;
-}
-
-.open .lid{
-transform:rotate(-45deg) translateY(-50px);
-}
-
-.btn{
-border:none;
-padding:14px 24px;
-border-radius:50px;
-background:white;
-color:#6a11cb;
-font-weight:700;
-cursor:pointer;
-margin-top:15px;
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-12px)}
 }
 
 .hidden{
 display:none;
 }
 
-.message{
-margin-top:15px;
-line-height:1.8;
-font-size:.95rem;
+.letter{
+font-family:'Dancing Script',cursive;
+font-size:1.8rem;
+line-height:1.6;
+color:#6b2742;
+background:#fff8fb;
+padding:24px;
+border-radius:24px;
+box-shadow:0 10px 20px rgba(0,0,0,.08);
 }
 
-.wish-card{
-margin-top:15px;
-padding:15px;
-border-radius:16px;
-background:rgba(255,255,255,.15);
+.wish{
+font-size:1.2rem;
+margin-top:18px;
+min-height:70px;
+transition:.4s;
+}
+
+.btn{
+margin-top:20px;
+padding:14px 24px;
+border:none;
+border-radius:50px;
+font-size:1rem;
+font-weight:700;
+background:white;
+color:#ff4d94;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 
 .final{
 font-size:2rem;
-font-weight:700;
-margin-top:20px;
+font-family:'Dancing Script',cursive;
 }
 
-.heart{
+.petal{
 position:fixed;
-font-size:22px;
+top:-20px;
+font-size:18px;
 pointer-events:none;
-animation:floatUp 3s linear forwards;
-}
-
-@keyframes floatUp{
-0%{
-transform:translateY(0) scale(1);
-opacity:1;
-}
-100%{
-transform:translateY(-250px) scale(1.8);
-opacity:0;
-}
-}
-
-.confetti{
-position:fixed;
-width:8px;
-height:8px;
-animation:fall 4s linear forwards;
+animation:fall linear infinite;
+opacity:.7;
 }
 
 @keyframes fall{
-from{
-transform:translateY(-20px) rotate(0);
+0%{
+transform:translateY(-20px) rotate(0deg);
 }
-to{
-transform:translateY(100vh) rotate(720deg);
+100%{
+transform:translateY(110vh) rotate(360deg);
 }
 }
 
-.footer{
-margin-top:25px;
-opacity:.8;
-font-size:.9rem;
+.loader{
+font-size:1.1rem;
+line-height:2;
+}
+
+.fadeIn{
+animation:fade .9s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(25px)}
+to{opacity:1;transform:translateY(0)}
 }
 </style>
 </head>
 <body>
 
-<div class="stars" id="stars"></div>
-
-<div class="container">
-
-<div class="glass">
-
-<h1>🎂 Happy Birthday Izel ✨</h1>
-
-<div class="type" id="typewriter"></div>
-
-<div id="gift" class="gift">
-<div class="lid"></div>
-<div class="box">
-<div class="ribbon-v"></div>
-<div class="ribbon-h"></div>
+<div class="section" id="loading">
+<div class="card">
+<h1>Preparing Your Gift 🎁</h1>
+<div class="loader">
+Loading Smiles ████████ 100%<br>
+Loading Happiness ████████ 100%<br>
+Loading Birthday Magic ████████ 100%
+</div>
 </div>
 </div>
 
-<button class="btn" onclick="openGift()">Open Your Gift 🎁</button>
+<div id="mainContent" class="hidden">
 
-<div id="content" class="hidden">
+<section class="section fadeIn">
+<h1>Happy Birthday Izel 🎂</h1>
+<p class="subtitle">A little surprise made just for you 🌸</p>
+<div class="gift" onclick="openGift()">🎁</div>
+<p>Tap the gift</p>
+</section>
 
-<div class="message">
-💌 <br><br>
-
-Hey Izel,
-
-We haven't known each other for very long, but you've already become one of the nicest people I've met online.
-
-Today is your special day, so forget the stress, enjoy the moment, and collect as many smiles as possible.
-
-May this year bring you happiness, success, fun adventures, and amazing memories.
-
-Thank you for being such a wonderful person to talk to.
-
-🎂 Happy Birthday once again!
-
-<br><br>
-— Peter ✨
+<section class="section hidden" id="letterSection">
+<div class="card letter fadeIn">
+Dear Izel 🌸<br><br>
+We met only a little while ago,<br>
+but I’m really happy we did.<br><br>
+Today is your day,<br>
+and I just wanted to make something
+that brings a smile to your face.<br><br>
+May your birthday be filled with happiness,
+cake, laughter, and beautiful moments 💖<br><br>
+Happy Birthday 🎂
 </div>
+</section>
 
-<div class="wish-card" id="wish">
-Tap below for a surprise wish 🌸
+<section class="section hidden" id="wishSection">
+<div class="card">
+<h1>Birthday Wishes ✨</h1>
+<div class="wish" id="wishText"></div>
+<button class="btn" onclick="nextWish()">Next Wish 💌</button>
 </div>
+</section>
 
-<button class="btn" onclick="newWish()">
-✨ New Wish
-</button>
-
+<section class="section hidden" id="finalSection">
+<div class="card">
 <div class="final">
-🎉 Enjoy Your Day! 🎉
+🎂 HAPPY BIRTHDAY 🎂<br><br>
+IZEL 💖<br><br>
+May your day be filled<br>
+with smiles, happiness,<br>
+and sweet memories 🌸<br><br>
+— From Peter 🤍
 </div>
-
-<div class="footer">
-Made with good vibes by Peter ❤️
 </div>
-
-</div>
-
-</div>
+</section>
 
 </div>
 
 <script>
-const text =
-"Today is all about smiles, cake, happiness and YOU 🎂";
-
-let i = 0;
-
-function typeWriter(){
-if(i < text.length){
-document.getElementById("typewriter").innerHTML += text.charAt(i);
-i++;
-setTimeout(typeWriter,50);
-}
-}
-typeWriter();
-
-function openGift(){
-document.getElementById("gift").classList.add("open");
-document.getElementById("content").classList.remove("hidden");
-
-confettiBurst();
-}
-
-function confettiBurst(){
-for(let i=0;i<120;i++){
-
-let c=document.createElement("div");
-c.className="confetti";
-
-c.style.left=Math.random()*100+"vw";
-c.style.top="-20px";
-
-c.style.background=
-`hsl(${Math.random()*360},100%,60%)`;
-
-document.body.appendChild(c);
 
 setTimeout(()=>{
-c.remove();
-},4000);
+document.getElementById("loading").style.display="none";
+document.getElementById("mainContent").classList.remove("hidden");
+},3000);
+
+function createPetal(){
+const petal=document.createElement("div");
+petal.classList.add("petal");
+petal.innerHTML="🌸";
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(4+Math.random()*6)+"s";
+petal.style.fontSize=(14+Math.random()*16)+"px";
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+petal.remove();
+},9000);
 }
+
+setInterval(createPetal,500);
+
+function openGift(){
+
+document.getElementById("letterSection").classList.remove("hidden");
+
+setTimeout(()=>{
+document.getElementById("wishSection").classList.remove("hidden");
+},900);
+
+setTimeout(()=>{
+document.getElementById("finalSection").classList.remove("hidden");
+},1800);
+
+window.scrollTo({
+top:window.innerHeight,
+behavior:"smooth"
+});
 }
 
 const wishes=[
-"May your playlists always hit the perfect mood 🎵",
-"May your dreams surprise you in the best way ✨",
-"May your battery never die at 1% 🔋",
-"May happiness find you often 🌸",
-"May every birthday be better than the last 🎂",
-"May your favorite food always taste amazing 🍕",
-"May your year be full of laughter 😄",
-"May you always find reasons to smile 💖"
+"May your smile stay bright all year ✨",
+"Wishing you happiness in every little moment 🌸",
+"May today feel as special as you are 🎂",
+"Hope your day is full of joy, cake, and love 💖",
+"Sending you lots of birthday magic 🌷"
 ];
 
-function newWish(){
-document.getElementById("wish").innerHTML =
-wishes[Math.floor(Math.random()*wishes.length)];
+let currentWish=0;
+
+function nextWish(){
+currentWish=(currentWish+1)%wishes.length;
+document.getElementById("wishText").innerText=wishes[currentWish];
 }
 
-document.addEventListener("click",(e)=>{
-const heart=document.createElement("div");
+document.getElementById("wishText").innerText=wishes[0];
 
-heart.className="heart";
+document.addEventListener("click", function(e){
+let heart=document.createElement("div");
 heart.innerHTML="💖";
-
+heart.style.position="fixed";
 heart.style.left=e.clientX+"px";
 heart.style.top=e.clientY+"px";
-
+heart.style.fontSize="22px";
+heart.style.pointerEvents="none";
+heart.style.animation="fade .8s ease";
 document.body.appendChild(heart);
 
-setTimeout(()=>{
-heart.remove();
-},3000);
+setTimeout(()=>heart.remove(),800);
 });
 
-for(let i=0;i<80;i++){
-const star=document.createElement("div");
-star.className="star";
-star.style.left=Math.random()*100+"%";
-star.style.top=Math.random()*100+"%";
-star.style.animationDelay=Math.random()*3+"s";
-document.getElementById("stars").appendChild(star);
-}
 </script>
 
 </body>
