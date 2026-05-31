@@ -1,1 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Izel 🎂</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#6a11cb,#2575fc,#ff6ec7);
+min-height:100vh;
+overflow-x:hidden;
+color:white;
+}
+
+.stars{
+position:fixed;
+inset:0;
+overflow:hidden;
+pointer-events:none;
+}
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+0%,100%{opacity:.2}
+50%{opacity:1}
+}
+
+.container{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+text-align:center;
+}
+
+.glass{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.2);
+border-radius:24px;
+padding:25px;
+width:100%;
+max-width:420px;
+box-shadow:0 10px 40px rgba(0,0,0,.25);
+}
+
+h1{
+font-size:2.2rem;
+margin-bottom:10px;
+}
+
+.type{
+font-size:1.1rem;
+opacity:.9;
+min-height:30px;
+}
+
+.gift{
+margin:30px auto;
+width:140px;
+height:140px;
+cursor:pointer;
+position:relative;
+transition:.5s;
+}
+
+.box{
+width:100%;
+height:100%;
+background:#ff4f8b;
+border-radius:15px;
+position:absolute;
+bottom:0;
+}
+
+.lid{
+width:150px;
+height:35px;
+background:#ff78aa;
+border-radius:10px;
+position:absolute;
+top:0;
+left:-5px;
+transition:.8s;
+transform-origin:left;
+}
+
+.ribbon-v{
+position:absolute;
+width:18px;
+height:140px;
+background:white;
+left:50%;
+transform:translateX(-50%);
+}
+
+.ribbon-h{
+position:absolute;
+width:140px;
+height:18px;
+background:white;
+top:40%;
+}
+
+.open .lid{
+transform:rotate(-45deg) translateY(-50px);
+}
+
+.btn{
+border:none;
+padding:14px 24px;
+border-radius:50px;
+background:white;
+color:#6a11cb;
+font-weight:700;
+cursor:pointer;
+margin-top:15px;
+}
+
+.hidden{
+display:none;
+}
+
+.message{
+margin-top:15px;
+line-height:1.8;
+font-size:.95rem;
+}
+
+.wish-card{
+margin-top:15px;
+padding:15px;
+border-radius:16px;
+background:rgba(255,255,255,.15);
+}
+
+.final{
+font-size:2rem;
+font-weight:700;
+margin-top:20px;
+}
+
+.heart{
+position:fixed;
+font-size:22px;
+pointer-events:none;
+animation:floatUp 3s linear forwards;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+100%{
+transform:translateY(-250px) scale(1.8);
+opacity:0;
+}
+}
+
+.confetti{
+position:fixed;
+width:8px;
+height:8px;
+animation:fall 4s linear forwards;
+}
+
+@keyframes fall{
+from{
+transform:translateY(-20px) rotate(0);
+}
+to{
+transform:translateY(100vh) rotate(720deg);
+}
+}
+
+.footer{
+margin-top:25px;
+opacity:.8;
+font-size:.9rem;
+}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+
+<div class="glass">
+
+<h1>🎂 Happy Birthday Izel ✨</h1>
+
+<div class="type" id="typewriter"></div>
+
+<div id="gift" class="gift">
+<div class="lid"></div>
+<div class="box">
+<div class="ribbon-v"></div>
+<div class="ribbon-h"></div>
+</div>
+</div>
+
+<button class="btn" onclick="openGift()">Open Your Gift 🎁</button>
+
+<div id="content" class="hidden">
+
+<div class="message">
+💌 <br><br>
+
+Hey Izel,
+
+We haven't known each other for very long, but you've already become one of the nicest people I've met online.
+
+Today is your special day, so forget the stress, enjoy the moment, and collect as many smiles as possible.
+
+May this year bring you happiness, success, fun adventures, and amazing memories.
+
+Thank you for being such a wonderful person to talk to.
+
+🎂 Happy Birthday once again!
+
+<br><br>
+— Peter ✨
+</div>
+
+<div class="wish-card" id="wish">
+Tap below for a surprise wish 🌸
+</div>
+
+<button class="btn" onclick="newWish()">
+✨ New Wish
+</button>
+
+<div class="final">
+🎉 Enjoy Your Day! 🎉
+</div>
+
+<div class="footer">
+Made with good vibes by Peter ❤️
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const text =
+"Today is all about smiles, cake, happiness and YOU 🎂";
+
+let i = 0;
+
+function typeWriter(){
+if(i < text.length){
+document.getElementById("typewriter").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter,50);
+}
+}
+typeWriter();
+
+function openGift(){
+document.getElementById("gift").classList.add("open");
+document.getElementById("content").classList.remove("hidden");
+
+confettiBurst();
+}
+
+function confettiBurst(){
+for(let i=0;i<120;i++){
+
+let c=document.createElement("div");
+c.className="confetti";
+
+c.style.left=Math.random()*100+"vw";
+c.style.top="-20px";
+
+c.style.background=
+`hsl(${Math.random()*360},100%,60%)`;
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+c.remove();
+},4000);
+}
+}
+
+const wishes=[
+"May your playlists always hit the perfect mood 🎵",
+"May your dreams surprise you in the best way ✨",
+"May your battery never die at 1% 🔋",
+"May happiness find you often 🌸",
+"May every birthday be better than the last 🎂",
+"May your favorite food always taste amazing 🍕",
+"May your year be full of laughter 😄",
+"May you always find reasons to smile 💖"
+];
+
+function newWish(){
+document.getElementById("wish").innerHTML =
+wishes[Math.floor(Math.random()*wishes.length)];
+}
+
+document.addEventListener("click",(e)=>{
+const heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="💖";
+
+heart.style.left=e.clientX+"px";
+heart.style.top=e.clientY+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},3000);
+});
+
+for(let i=0;i<80;i++){
+const star=document.createElement("div");
+star.className="star";
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+star.style.animationDelay=Math.random()*3+"s";
+document.getElementById("stars").appendChild(star);
+}
+</script>
+
+</body>
+  </html>
